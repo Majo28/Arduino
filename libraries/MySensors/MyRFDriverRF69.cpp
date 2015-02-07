@@ -5,14 +5,14 @@ MyRFDriverRF69::MyRFDriverRF69() : MyRFDriver() {
 	radio = new RFM69();
 }
 
-void MyRFDriverRF69::init() {
+bool MyRFDriverRF69::init() {
 	// Start up the radio library
 	radio->initialize(FREQUENCY,_address,NETWORKID);
 #ifdef IS_RFM69HW
     radio->setHighPower(); //uncomment only for RFM69HW!
 #endif
     // radio->encrypt(ENCRYPTKEY);
-	
+	return RF_INIT_OK;
 }
 
 void MyRFDriverRF69::setAddress(uint8_t address) {
